@@ -9,7 +9,7 @@ var rl = readline.createInterface({
 
 //for(var i = 6; i > 0; i--) {
 rl.question("please input Four digit?", function(answer) {
-  // TODO: Log the answer in a database
+
   var checkInput = new CheckInput();
   var checkedTrue = checkInput.getInputNumber(answer);
   if (checkedTrue) {
