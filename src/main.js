@@ -1,5 +1,8 @@
 var CheckInput = require('./model/check-input');
+var ReturnTips = require('./model/return-tips');
+var RandomNum = require('./model/random-num');
 var readline = require('readline');
+var _ = require('lodash');
 
 function startGame() {
 
@@ -8,22 +11,21 @@ var rl = readline.createInterface({
   output: process.stdout
 });
 
-//for(var i = 6; i > 0; i--) {
+
 rl.question("please input Four digit?", function(answer) {
 
-  var checkInput = new CheckInput();
-  var checkedTrue = checkInput.getInputNumber(answer);
- // var returnTips = new ReturnTips(1234, answer);
+  var randomNum = new RandomNum();
+  var randomNumOne = randomNum.getRandomNum();
+  console.log(randomNumOne);
+  /*var checkInput = new CheckInput();
+  var checkedTrue = checkInput.getInputNumber(answer);*/
+  var answerArray = _.toArray(answer);
+  var randomArray = _.toArray(randomNumOne);
+  var returnTips = new ReturnTips(randomArray, answerArray);
 
-  if (checkedTrue) {
-  	console.log("congratulations!");
-  }else{
-  	console.log("that's good:", answer);
-  }
+  console.log(returnTips.getReturnTips());
   rl.close();
 });	
-//}
-
 }
 
 startGame();
